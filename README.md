@@ -23,15 +23,16 @@ The PIO button information must be added to the device tree. In the SoCEDS comma
 
 ## change the dts 
 Open the socfpga.dts add the ir_receive IP description in the dts file.
-find the terasic_irda and change the content as  follow£º
-*		
+find the terasic_irda and change the content as  follow:
+```		
 			terasic_irda: irm@0x100010010 {
 				compatible = "terasic,irm";
 				reg = <0x00000001 0x00010010 0x00000004>;
 				interrupt-parent = <&hps_0_arm_gic_0>;
 				interrupts = <0 43 4>;
 			}; //end irm@0x100010010 (terasic_irda)
-*
+```
+
 ## generate the dtb file
 
 *dtc -I dts -o dtb -o socfpga.dtb socfpga.dts*
