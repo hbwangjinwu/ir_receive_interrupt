@@ -1,7 +1,8 @@
 # IR Receive interrupt Example
 
-This  is  a custom soft IP to interrupt the HPS example. The custom ir IP receive the data from the IR remote controller and interrupt the HPS. The linux driver reponse the interrupt and read the data. The application in the user space get the IR identify data when interrupt reached then  print the data on the screen.
-![mark](http://ogtvbbrfk.bkt.clouddn.com/blog/20170208/122142333.png)
+This  is  a custom soft IP to interrupt the HPS example. The custom ir_receive IP receives the data from the IR remote controller and interrupt the HPS. The linux driver reponses the interrupt and reads the data. The application in the user space gets the IR identify data when interrupt reached then  print the data on the screen.
+![mark](http://ogtvbbrfk.bkt.clouddn.com/blog/20170208/134058774.png)
+
 # Compile the Quartus project
 Open the hardware project and compile the project to generate the .sof file.
 
@@ -13,13 +14,15 @@ Git clone the SoCFPGA linux source and compile the kernel. Copy the zImage file 
 ## generate the dts file
 The PIO button information must be added to the device tree. In the SoCEDS command shell, typing the following command and get the dtb file
 
-*sopc2dts --input soc_system.sopcinfo\
-  --output socfpga.dts\
-  --type dts\
-  --board soc_system_board_info.xml\
-  --board hps_common_board_info.xml\
-  --bridge-removal all\
-  --clocks*
+```
+	sopc2dts --input soc_system.sopcinfo
+	  --output socfpga.dts
+	  --type dts
+	  --board soc_system_board_info.xml
+	  --board hps_common_board_info.xml
+	  --bridge-removal all
+	  --clocks
+```
 
 ## change the dts 
 Open the socfpga.dts add the ir_receive IP description in the dts file.
